@@ -1,0 +1,14 @@
+{
+  "name": "@macrop/components",
+  "main": "index.ts",
+  "private": true,
+  "version": "0.0.0",
+  "license": "MIT",
+  "dependencies": {
+    "@macrop/config": "^0.0.0",
+    "styled-components": "^4.1.2"
+  },
+  "devDependencies": {
+    "@types/styled-components": "^4.1.4"
+  }
+}
