@@ -1,0 +1,40 @@
+{
+  "name": "macrop_webapp",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@material-ui/core": "^3.7.1",
+    "@types/jest": "23.3.10",
+    "@types/node": "10.12.18",
+    "@types/react-dom": "16.0.11",
+    "react": "^16.7.0-alpha.2",
+    "react-dom": "^16.7.0-alpha.2",
+    "react-router5": "^7.0.2",
+    "react-scripts": "2.1.2",
+    "router5": "^7.0.1",
+    "router5-plugin-browser": "^7.0.1",
+    "router5-plugin-logger": "^7.0.1",
+    "styled-components": "^4.1.3",
+    "typescript": "3.2.2"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "devDependencies": {
+    "@types/react": "^16.7.18",
+    "@types/router5": "^5.0.0",
+    "@types/styled-components": "^4.1.4"
+  }
+}
