@@ -6,13 +6,20 @@ import * as serviceWorker from "./serviceWorker";
 import { createRouter } from "./router";
 import { RouterProvider, Route } from "react-router5";
 import { ThemeProvider } from "styled-components";
+import { Provider } from "react-redux";
+import { store } from "./store";
+
 const router = createRouter();
+
+
 
 router.start(() =>
   ReactDOM.render(
-    <RouterProvider router={router}>
-      <Route>{({ route }) => <App route={route} />}</Route>
-    </RouterProvider>,
+    <Provider store={store}>
+      <RouterProvider router={router}>
+        <Route>{({ route }) => <App route={route} />}</Route>
+      </RouterProvider>
+    </Provider>,
     document.getElementById("root")
   )
 );
