@@ -10,3 +10,6 @@ export function createRouter() {
 
   return router;
 }
+
+
+export const router = createRouter();

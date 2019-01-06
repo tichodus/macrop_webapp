@@ -29,7 +29,7 @@ const BoxContainer = styled.div<Partial<FlexboxProps>>`
   ${props => height(props.height)}
 `;
 
-type BoxProps = Partial<FlexboxProps> & { children?: React.ReactChild };
+type BoxProps = Partial<FlexboxProps> & React.HTMLAttributes<HTMLDivElement>;
 
 export const Box = (props: BoxProps) => {
   const { children, ...rest } = props;

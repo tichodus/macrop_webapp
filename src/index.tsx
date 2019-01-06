@@ -1,17 +1,17 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import App from "./App";
+import Application from "./App";
 import * as serviceWorker from "./serviceWorker";
-import { createRouter } from "./router";
+import { router } from "./router";
 import { RouterProvider, Route } from "react-router5";
-import { ThemeProvider } from "styled-components";
+import styled, { ThemeProvider } from "styled-components";
 import { Provider } from "react-redux";
 import { store } from "./store";
 
-const router = createRouter();
-
-
+const App = styled(Application)`
+  overflow: hidden;
+`;
 
 router.start(() =>
   ReactDOM.render(
