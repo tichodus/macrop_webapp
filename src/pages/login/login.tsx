@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Flex,
   AlignItems,
@@ -6,14 +6,14 @@ import {
   FlexDirection,
   Box
 } from "../../components/flexbox";
-import ActionType, { Action } from "../../store/actions";
+import { Action } from "../../store/actions";
 import { connect } from "react-redux";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import styled from "styled-components";
 import { transparentize } from "polished";
-import { Dispatch } from "../../index.d";
 import { Link } from "react-router5";
+import { router } from "../../router";
 
 const Container = styled(Flex)`
   background-image: url("assets/login-page.jpg");
@@ -23,10 +23,6 @@ const LoginContainer = styled(Flex)`
   background: ${transparentize(0.2, "#ffffff")};
 `;
 
-const WideButton = styled(Button)`
-  width: 100%;
-`;
-
 interface LoginProps {
   dispatch: (action: Action) => void;
 }
@@ -34,6 +30,13 @@ interface LoginProps {
 let Login = (props: LoginProps) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+
+  useEffect(() => {
+    const me = localStorage.getItem("me");
+    if (me) {
+      router.navigate("dashboard");
+    }
+  }, []);
 
   const { dispatch } = props;
   return (

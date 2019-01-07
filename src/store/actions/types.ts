@@ -4,7 +4,8 @@ enum Action {
   REGISTER = "register",
   ME = "me",
   START_PROGRESS_BAR = "start_progress_bar",
-  STOP_PROGRESS_BAR = "stop_progress_bar"
+  STOP_PROGRESS_BAR = "stop_progress_bar",
+  USER_LOGGED = "user_logged"
 }
 
 export default Action;

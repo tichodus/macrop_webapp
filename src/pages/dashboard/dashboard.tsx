@@ -4,11 +4,8 @@ import Action from "../../store/actions/types";
 import { connect } from "react-redux";
 
 let Dashboard = (props: Dispatchable) => {
-  useEffect(() => {
-    props.dispatch({ type: Action.ME });
-  });
-
-  return <div>Dashboard</div>;
+  const me = JSON.parse(localStorage.getItem("me") || "");
+  return <div>{me.first_name}</div>;
 };
 
 export default connect()(Dashboard);

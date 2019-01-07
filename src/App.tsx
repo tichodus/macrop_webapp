@@ -3,7 +3,7 @@ import { Route } from "route-node";
 import Login from "./pages/login/login";
 import Dashboard from "./pages/dashboard/dashboard";
 import { LinearProgress } from "@material-ui/core";
-import { Store } from "redux";
+import Register from "./pages/registration/registration";
 import { connect } from "react-redux";
 
 interface AppProps {
@@ -27,7 +27,7 @@ function getPage(routeName: string) {
     case "login":
       return <Login />;
     case "register":
-      return <div>Register</div>;
+      return <Register />;
     case "dashboard":
       return <Dashboard />;
     default:
