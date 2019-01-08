@@ -1,6 +1,8 @@
-import ActionTypes from "./types";
+import ActionType from "./types";
 
 export interface Action {
-  action: ActionTypes;
-  payload?: {};
+  type: ActionType;
+  payload?: any;
 }
+
+export default ActionType;

@@ -1,6 +1,10 @@
 const LoginRoute = [
   { name: "login", path: "/" },
-  { name: "test", path: "/test" }
+  { name: "register", path: "/register" },
+  {
+    name: "dashboard",
+    path: "/dashboard"
+  }
 ];
 
 export const Routes = [...LoginRoute];
