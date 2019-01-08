@@ -8,6 +8,7 @@ import { RouterProvider, Route } from "react-router5";
 import styled, { ThemeProvider } from "styled-components";
 import { Provider } from "react-redux";
 import { store } from "./store";
+import theme from "./theme/theme";
 
 const App = styled(Application)`
   overflow: hidden;
@@ -16,9 +17,11 @@ const App = styled(Application)`
 router.start(() =>
   ReactDOM.render(
     <Provider store={store}>
-      <RouterProvider router={router}>
-        <Route>{({ route }) => <App route={route} />}</Route>
-      </RouterProvider>
+      <ThemeProvider theme={theme}>
+        <RouterProvider router={router}>
+          <Route>{({ route }) => <App route={route} />}</Route>
+        </RouterProvider>
+      </ThemeProvider>
     </Provider>,
     document.getElementById("root")
   )

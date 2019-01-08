@@ -40,9 +40,12 @@ function* me() {
 
 function* register(action: Action) {
   try {
+    yield put({ type: ActionType.START_PROGRESS_BAR });
     const response = yield httpClient.post("api/register", action.payload);
+    router.cancel;
     if (response) {
       const { email, password } = action.payload;
+      yield put({ type: ActionType.STOP_PROGRESS_BAR });
       yield put({
         type: ActionType.LOGIN,
         payload: { username: email, password: password }

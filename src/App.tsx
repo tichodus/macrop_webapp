@@ -36,7 +36,6 @@ function getPage(routeName: string) {
 }
 
 const mapStateToProps = (state: any) => {
-  console.log(state);
   return {
     progress: state.progressBarReducer.progress
   };
