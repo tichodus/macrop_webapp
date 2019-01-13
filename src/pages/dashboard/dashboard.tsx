@@ -8,8 +8,7 @@ import Logo from "../../components/logo/logo";
 let Dashboard = (props: Dispatchable) => {
   const me = JSON.parse(localStorage.getItem("me") || "");
   return (
-    <Header>
-    </Header>
+   <div />
   );
 };
 
