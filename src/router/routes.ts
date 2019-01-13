@@ -4,6 +4,10 @@ const LoginRoute = [
   {
     name: "dashboard",
     path: "/dashboard"
+  },
+  {
+    name: "projects",
+    path: "/projects"
   }
 ];
 

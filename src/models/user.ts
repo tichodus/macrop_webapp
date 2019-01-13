@@ -4,19 +4,22 @@ export class User {
   private _gender: string;
   private _id: number;
   private _lastName: string;
+  private _image: string;
 
   constructor(
     id: number,
     firstName: string,
     lastName: string,
     email: string,
-    gender: string
+    gender: string,
+    image: string
   ) {
     this._id = id;
     this._firstName = firstName;
     this._lastName = lastName;
     this._gender = gender;
     this._email = email;
+    this._image = image;
   }
 
   public get email(): string {
@@ -49,5 +52,12 @@ export class User {
   }
   public set lastName(value: string) {
     this._lastName = value;
+  }
+  public get image(): string {
+    return this._image;
+  }
+
+  public set image(value: string) {
+    this._image = value;
   }
 }
