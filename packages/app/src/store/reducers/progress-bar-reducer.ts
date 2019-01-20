@@ -1,5 +1,5 @@
 import { Action } from "../actions";
-import ActionType from "../actions/types";
+import {ActionType} from "../actions/types";
 
 export const progressBarReducer = (state = {}, action: Action) => {
   switch (action.type) {

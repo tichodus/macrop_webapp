@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Route } from "route-node";
 import Login from "./pages/login/login";
 import Dashboard from "./pages/dashboard/dashboard";
@@ -10,7 +10,7 @@ import Sidenav from "./components/sidenav/sidenav";
 import config from "./config";
 import { Dispatchable } from "./index.d";
 import Projects from "./pages/projects/projects";
-import ActionType from "./store/actions";
+import Dialogs from "./components/dialogs/dialogs";
 interface AppProps extends Dispatchable {
   route: Route;
   progress?: boolean;
@@ -18,7 +18,7 @@ interface AppProps extends Dispatchable {
 
 function App(props: AppProps) {
   const routeName = props.route.name;
-  const { progress, dispatch } = props;
+  const { progress } = props;
   return (
     <div>
       {routeName !== "login" && routeName !== "register" && <Header />}
@@ -27,6 +27,7 @@ function App(props: AppProps) {
       )}
       {progress && <LinearProgress />}
       {getPage(routeName)}
+      <Dialogs />
     </div>
   );
 }

@@ -13,12 +13,11 @@ import {
   FormControlLabel,
   Radio
 } from "@material-ui/core";
-import login from "../login/login";
 import { Link } from "react-router5";
 import styled from "styled-components";
 import { transparentize } from "polished";
 import { Dispatchable } from "../../index.d";
-import ActionType from "../../store/actions";
+import { ActionType } from "../../store/actions";
 import { connect } from "react-redux";
 
 const Container = styled(Flex)`

@@ -1,6 +1,6 @@
-import ActionType, { Action } from "../actions";
+import { ActionType, Action } from "../actions";
 import httpClient from "@macrop/http";
-import { takeEvery, put } from "redux-saga/effects";
+import { put } from "redux-saga/effects";
 import { Token } from "../../index.d";
 import { router } from "../../router";
 
@@ -27,7 +27,7 @@ export function* login(action: Action) {
   }
 }
 
-function* me() {
+export function* me() {
   try {
     const me = yield httpClient.get("api/user");
     if (me) {
@@ -38,7 +38,7 @@ function* me() {
   }
 }
 
-function* register(action: Action) {
+export function* register(action: Action) {
   try {
     yield put({ type: ActionType.START_PROGRESS_BAR });
     const response = yield httpClient.post("api/register", action.payload);
@@ -54,14 +54,4 @@ function* register(action: Action) {
   } catch (e) {
     console.log(e);
   }
-}
-
-/*
-   Starts fetchUser on each dispatched `USER_FETCH_REQUESTED` action.
-   Allows concurrent fetches of user.
- */
-export function* mySaga() {
-  yield takeEvery(ActionType.LOGIN, login);
-  yield takeEvery(ActionType.ME, me);
-  yield takeEvery(ActionType.REGISTER, register);
 }
