@@ -1,5 +1,5 @@
 import { Action } from "../actions";
-import ActionType from "../actions/types";
+import { ActionType } from "../actions/types";
 
 export const sessionReducer = (state = {}, action: Action) => {
   switch (action.type) {

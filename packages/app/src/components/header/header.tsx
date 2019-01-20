@@ -1,4 +1,4 @@
-import React, { useState, useReducer, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import styled from "styled-components";
 import { Flex, Box, AlignItems, JustifyContent } from "../flexbox";
 import Logo from "../logo/logo";
@@ -14,8 +14,8 @@ import {
   ListItem
 } from "@material-ui/core";
 import MenuIcon from "mdi-react/MenuIcon";
-import { Dispatchable } from "../../index.d";
-import ActionType from "../../store/actions";
+import { Dispatchable, Dispatch } from "../../index.d";
+import { ActionType } from "../../store/actions";
 import { connect } from "react-redux";
 import PlusIcon from "mdi-react/PlusIcon";
 
@@ -58,7 +58,7 @@ const Header = (props: HeaderProps) => {
       </Box>
       {props.children}
       <Flex width="100%" paddingX={3} justify={JustifyContent.FLEX_END}>
-        {getHeaderActions()}
+        {getHeaderActions(dispatch)}
         <Button variant="outlined" color="secondary" onClick={logout}>
           Logout
         </Button>
@@ -79,7 +79,7 @@ const Header = (props: HeaderProps) => {
     }
   }
 
-  function getHeaderActions() {
+  function getHeaderActions(dispatch: Dispatch) {
     return (
       <Flex paddingX={4}>
         <span ref={addButtonRef}>
@@ -87,7 +87,7 @@ const Header = (props: HeaderProps) => {
             <AddProjectIcon />
           </IconButton>
         </span>
-        <RootRef rootRef={popperRef}>
+        <span ref={popperRef}>
           <Popper
             placement="bottom-end"
             open={showPopper}
@@ -96,11 +96,11 @@ const Header = (props: HeaderProps) => {
           >
             {({ TransitionProps }) => (
               <Fade {...TransitionProps} timeout={350}>
-                <Paper>{getPopperContent()}</Paper>
+                <Paper>{getPopperContent(dispatch)}</Paper>
               </Fade>
             )}
           </Popper>
-        </RootRef>
+        </span>
       </Flex>
     );
   }
@@ -116,12 +116,19 @@ function logout() {
   router.navigate("login");
 }
 
-function getPopperContent() {
+function getPopperContent(dispatch: Dispatch) {
   return (
     <List>
-      <ListItem button>Create Project</ListItem>
-      <ListItem button>Create Team</ListItem>
+      <ListItem button onClick={createProject}>
+        Create Project
+      </ListItem>
     </List>
   );
+
+  function createProject() {
+    dispatch({
+      type: ActionType.OPEN_CREATE_PROJECT
+    });
+  }
 }
 export default connect()(Header);
