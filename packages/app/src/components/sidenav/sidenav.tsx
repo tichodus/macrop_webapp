@@ -12,7 +12,7 @@ import {
 import { connect } from "react-redux";
 import { Link } from "react-router5";
 import { Dispatchable, Dispatch } from "../../index.d";
-import ActionType from "../../store/actions";
+import { ActionType } from "../../store/actions";
 import { Box, Flex, JustifyContent } from "../flexbox";
 import ChevronLeftIcon from "mdi-react/ChevronLeftIcon";
 import Logo from "../logo/logo";

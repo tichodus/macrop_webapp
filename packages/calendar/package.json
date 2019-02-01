@@ -1,0 +1,10 @@
+{
+  "name": "@macrop/calendar",
+  "version": "1.0.0",
+  "main": "src/index.ts",
+  "license": "MIT",
+  "dependencies": {
+    "@macrop/flexbox": "^1.0.0",
+    "moment": "^2.24.0"
+  }
+}
