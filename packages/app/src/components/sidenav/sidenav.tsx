@@ -5,7 +5,6 @@ import {
   ListItem,
   ListItemIcon,
   ListItemText,
-  IconButton,
   Divider,
   Button
 } from "@material-ui/core";

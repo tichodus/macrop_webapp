@@ -6,12 +6,12 @@ const DIST = "/dist";
 
 module.exports = {
   mode: "development",
-  devtool: "inline-source-map",
-  watch: true,
-  watchOptions: {
-    aggregateTimeout: 300,
-    poll: 1000
-  },
+  // devtool: "inline-source-map",
+  // watch: true,
+  // watchOptions: {
+  //   aggregateTimeout: 300,
+  //   poll: 1000
+  // },
   entry: "./src/index.tsx",
   output: {
     path: path.resolve(__dirname, DIST),

@@ -42,7 +42,7 @@ let Registration = (props: Dispatchable) => {
   const [gender, setGender] = useState(Gender.MALE);
   const [password, setPassword] = useState("");
   const [repeatedPassword, setRepeatedPassword] = useState("");
-  const [passwodMatch, setPasswordMatch] = useState(true);
+  // const [passwodMatch, setPasswordMatch] = useState(true);
   const { dispatch } = props;
 
   return (

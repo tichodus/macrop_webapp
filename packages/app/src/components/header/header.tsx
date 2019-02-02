@@ -9,7 +9,6 @@ import {
   Popper,
   Fade,
   Paper,
-  RootRef,
   List,
   ListItem
 } from "@material-ui/core";
@@ -41,7 +40,7 @@ const Header = (props: HeaderProps) => {
     document.addEventListener("mousedown", handleClickOutside);
 
     () => document.removeEventListener("mousedown", handleClickOutside);
-  });
+  }, []);
 
   return (
     <Contanier align={AlignItems.CENTER} height={4}>
