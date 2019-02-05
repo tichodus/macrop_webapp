@@ -13,5 +13,5 @@ export const ActionType = {
   ...DialogActions,
   ...ProjectActions,
   ...CalendarActions,
-  ...UsersActions
+  ...UsersActions,
 };

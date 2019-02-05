@@ -1,23 +1,21 @@
 import React from "react";
 import { Project as Model, Project } from "../models/project";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import {
   Flex,
   JustifyContent,
   AlignItems,
   Box,
-  FlexDirection
+  FlexDirection,
+  FlexWrap
 } from "@macrop/flexbox";
-import { IconButton } from "@material-ui/core";
-import { User } from "../../../models/user";
+import { IconButton, Avatar } from "@material-ui/core";
+import { User, UserDTO } from "../../../models/user";
 
 import AccountPlus from "mdi-react/AccountPlusIcon";
 import DeleteIcon from "mdi-react/DeleteIcon";
 
-const Container = styled(Flex)<{ selected?: boolean }>`
-  border: ${props =>
-    props.selected ? `2px solid ${props.theme.palette.primary}` : null};
-`;
+const Container = styled(Flex)``;
 
 const Content = styled(Flex)``;
 
@@ -27,8 +25,10 @@ const Header = styled(Flex)`
   border: 1px solid ${props => props.theme.palette.primary};
 `;
 
-const Body = styled(Flex)`
+const Body = styled(Flex)<{ selected?: boolean }>`
   border: 1px solid #777;
+  ${props =>
+    props.selected && css`border 2px solid ${props.theme.palette.primary}`}
 `;
 
 interface Props {
@@ -49,7 +49,6 @@ export const ProjectCard = (props: Props) => {
 
   return (
     <Container
-      selected={selected}
       width="100%"
       justify={JustifyContent.CENTER}
       align={AlignItems.CENTER}
@@ -58,7 +57,7 @@ export const ProjectCard = (props: Props) => {
       <Content direction={FlexDirection.COLUMN} width="100%" padding={3}>
         <Header paddingX={1} width="100%" height={40} align={AlignItems.CENTER}>
           <Box width="100%">{project.name}</Box>
-          {project.owner.id === me.id && (
+          {project.user_id === me.id && (
             <Flex justify={JustifyContent.FLEX_END} width="100%">
               <IconButton style={{ color: "white" }} onClick={addPeople}>
                 <AccountPlus />
@@ -69,12 +68,35 @@ export const ProjectCard = (props: Props) => {
             </Flex>
           )}
         </Header>
-        <Body height={100} padding={1} width="100%">
-          {project.description}
+        <Body
+          direction={FlexDirection.COLUMN}
+          height={100}
+          padding={1}
+          width="100%"
+          selected={selected}
+        >
+          <Box paddingY={2}>{project.description}</Box>
+          <Flex width={700} wrap={FlexWrap.WRAP}>
+            {project.people.map(user => (
+              <Avatar
+                src={user.image}
+                title={`${user.first_name} ${user.last_name}`}
+              >
+                {getLetters(user)}
+              </Avatar>
+            ))}
+          </Flex>
         </Body>
       </Content>
     </Container>
   );
+
+  function getLetters(user: UserDTO) {
+    return `${user.first_name} ${user.last_name}`
+      .split(" ")
+      .map(word => (word[0] ? word[0] : ""))
+      .join("");
+  }
 
   function handleClick() {
     if (onClick) {

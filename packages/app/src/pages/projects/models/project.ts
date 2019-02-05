@@ -1,4 +1,4 @@
-import { User } from "../../../models/user";
+import { User, UserDTO } from "../../../models/user";
 
 export interface Project {
   id: number;
@@ -7,4 +7,5 @@ export interface Project {
   name: string;
   archived: null;
   owner: User;
+  people: UserDTO[];
 }

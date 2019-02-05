@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Day } from "../models/day";
-import { Flex, FlexWrap, Box, FlexDirection } from "@macrop/flexbox";
+import { Flex, FlexWrap, FlexDirection } from "@macrop/flexbox";
 import { Header } from "./header";
 import { Weekdays } from "./weekdays";
 import { Cells } from "./cells";
@@ -16,20 +16,6 @@ interface CalendarProps {
 const Container = styled(Flex)`
   background: white;
 `;
-// const data: Day[] = [
-//   {
-//     day: new Date(),
-//     events: [
-//       {
-//         type: EventType.TASK,
-//         name: "FE MEETING",
-//         start_time: new Date(),
-//         end_time: new Date(),
-//         id: 1
-//       }
-//     ]
-//   }
-// ];
 
 const Calendar = (props: CalendarProps) => {
   const [currentDate, setCurrentDate] = useState(moment());

@@ -2,7 +2,7 @@ import { ActionType } from "../actions";
 import { takeEvery } from "redux-saga/effects";
 import { login, me, register } from "./session-saga";
 import { createProject, getProjects, addUsersOnProject } from "./project-saga";
-import { getCalendar } from "./calendar-saga";
+import { getCalendar, createTask, createEvent } from "./calendar-saga";
 import { filterUsers } from "./users-saga";
 
 export function* rootSaga() {
@@ -14,4 +14,6 @@ export function* rootSaga() {
   yield takeEvery(ActionType.GET_PROJECTS_FOR_USER, getProjects);
   yield takeEvery(ActionType.FILTER_USERS_RESULT, filterUsers);
   yield takeEvery(ActionType.ADD_USERS_ON_PROJECT, addUsersOnProject);
+  yield takeEvery(ActionType.CREATE_TASK, createTask);
+  yield takeEvery(ActionType.CREATE_EVENT, createEvent);
 }

@@ -36,7 +36,7 @@ const Span = styled.span<{ currentMonth: boolean; currentDay: boolean }>`
 `;
 
 interface Props {
-  data: Day[];
+    data: Day[];
   currentDate: moment.Moment;
   onDaySelected?: (date: moment.Moment) => void;
   onAddEvent?: (date: moment.Moment) => void;
