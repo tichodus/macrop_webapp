@@ -4,6 +4,7 @@ import { SidenavActions } from "./sidenav-actions";
 import { DialogActions } from "./dialog-actions";
 import { ProjectActions } from "./project-actions";
 import { CalendarActions } from "./calendar-actions";
+import { UsersActions } from "./users-actions";
 
 export const ActionType = {
   ...SessionActions,
@@ -11,5 +12,6 @@ export const ActionType = {
   ...SidenavActions,
   ...DialogActions,
   ...ProjectActions,
-  ...CalendarActions
+  ...CalendarActions,
+  ...UsersActions
 };

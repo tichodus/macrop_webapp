@@ -8,9 +8,11 @@ import { put } from "redux-saga/effects";
 export function* getCalendar(action: Action) {
   try {
     const me: User = yield JSON.parse(localStorage.getItem("me") || "");
-    const response = yield httpClient.get(
-      `api/user/${me.id}/calendar/${action.payload}`
-    );
+
+    const response = yield httpClient.get(`api/calendar/${me.id}`, {
+      month: action.payload
+    });
+
     if (response) {
       yield put({ type: ActionType.SET_CALENDAR, payload: response });
       router.navigate("projects");

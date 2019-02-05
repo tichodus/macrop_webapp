@@ -1,2 +1,2 @@
-export { default as Day } from "./day";
+export { default as Cell } from "./cell";
 export { default as Event } from "./event/event";

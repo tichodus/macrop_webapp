@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { Flex, Box, JustifyContent, AlignItems } from "@macrop/flexbox";
 import { CalendarEvent, EventType } from "../../../models/event";
 import ClockIcon from "mdi-react/ClockIcon";
+import moment from "moment";
 
 const PARTY = "#DD355B";
 const MEETING = "#01A0FE";
@@ -20,12 +21,19 @@ const getBgColor = (eventType: EventType) => {
 };
 
 const Container = styled(Flex)<{ eventType: EventType }>`
-  height: 50px;
+  height: 35px;
   background-color: ${props => getBgColor(props.eventType)};
 
   &:hover {
     opacity: 0.7;
   }
+`;
+
+const StyledBox = styled(Box)`
+  color: white;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 `;
 
 interface Props {
@@ -35,22 +43,29 @@ interface Props {
 
 const Event = (props: Props) => {
   const { event, onClick } = props;
+  const time = `${moment(event.start_time).hours()} - ${moment(
+    event.end_time
+  ).hours()}`;
+
   return (
     <Container
       onClick={handleClick}
-      paddingX={2}
+      paddingX={1}
+      marginY={1}
       eventType={event.type}
       align={AlignItems.CENTER}
     >
-      <Box style={{ color: "white" }} width="100%">
+      <StyledBox width={200} title={event.name}>
         {event.name}
-      </Box>
+      </StyledBox>
       <Flex width="100%" justify={JustifyContent.FLEX_END}>
         <Flex align={AlignItems.CENTER} style={{ color: "white" }}>
           <Box paddingX={1}>
-            <ClockIcon />{" "}
+            <ClockIcon />
           </Box>
-          {event.start_time.getHours()} -{event.end_time.getHours()}
+          <StyledBox width={50} title={time}>
+            {time}
+          </StyledBox>
         </Flex>
       </Flex>
     </Container>

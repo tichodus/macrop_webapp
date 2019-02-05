@@ -17,6 +17,7 @@ class HttpClient implements HttpMethods {
   public get<T>(url: string, params?: string | {}): Promise<T> {
     return axios
       .get<T>(this.getUrl(url), {
+        params,
         headers: this.getHeaders()
       })
       .then(response => {

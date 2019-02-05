@@ -1,6 +1,6 @@
 import { CalendarEvent } from "./event";
 
 export interface Day {
-  day: Date;
+  date: string;
   events: CalendarEvent[];
 }

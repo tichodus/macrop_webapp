@@ -8,7 +8,7 @@ export interface CalendarEvent {
   id: number;
   name: string;
   description?: string;
-  start_time: Date;
-  end_time: Date;
+  start_time: string;
+  end_time: string;
   type: EventType;
 }

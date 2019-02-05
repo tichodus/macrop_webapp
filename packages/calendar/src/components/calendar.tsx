@@ -1,54 +1,61 @@
-import React from "react";
+import React, { useState } from "react";
 import { Day } from "../models/day";
-import { Day as DayComponent } from "./day/";
 import { Flex, FlexWrap, Box, FlexDirection } from "@macrop/flexbox";
-import { CalendarEvent, EventType } from "../models/event";
-import { Event } from "./day/event";
 import { Header } from "./header";
+import { Weekdays } from "./weekdays";
+import { Cells } from "./cells";
+import moment from "moment";
+import styled from "styled-components";
+
 interface CalendarProps {
   calendar: Day[];
+  onChange?: (date: moment.Moment) => void;
+  onAddEvent?: (date: moment.Moment) => void;
 }
 
-const data: Day[] = [
-  {
-    day: new Date(),
-    events: [
-      {
-        type: EventType.TASK,
-        name: "FE MEETING",
-        start_time: new Date(),
-        end_time: new Date(),
-        id: 1
-      }
-    ]
-  }
-];
+const Container = styled(Flex)`
+  background: white;
+`;
+// const data: Day[] = [
+//   {
+//     day: new Date(),
+//     events: [
+//       {
+//         type: EventType.TASK,
+//         name: "FE MEETING",
+//         start_time: new Date(),
+//         end_time: new Date(),
+//         id: 1
+//       }
+//     ]
+//   }
+// ];
 
 const Calendar = (props: CalendarProps) => {
-  const { calendar } = props;
+  const [currentDate, setCurrentDate] = useState(moment());
 
-  console.log(calendar);
+  const { onChange, calendar, onAddEvent } = props;
+
+  const handleDateChange = (date: moment.Moment) => {
+    setCurrentDate(date);
+    onChange && onChange(date);
+  };
+
   return (
-    <Flex direction={FlexDirection.COLUMN} wrap={FlexWrap.WRAP}>
-      <Header />
-      {getDays(data)}
-    </Flex>
+    <Container direction={FlexDirection.COLUMN} wrap={FlexWrap.WRAP}>
+      <Header date={moment(currentDate)} onChange={handleDateChange} />
+      <Weekdays />
+      <Cells
+        onAddEvent={onAddEvent}
+        data={calendar}
+        currentDate={currentDate}
+      />
+    </Container>
   );
 };
 
-function getDays(calendar: Day[]) {
-  if (!calendar) {
-    return;
-  }
-  return calendar.map((day: Day, index: number) => (
-    <Box key={index}>
-      <DayComponent>{getEvents(day.events)}</DayComponent>
-    </Box>
-  ));
-}
-
-function getEvents(events: CalendarEvent[]) {
-  return events.map((event, index) => <Event key={index} event={event} />);
-}
+// function getEvents(events: CalendarEvent[]) {
+//   return events.map((event, index) => <Event key={index} event={event} />);
+// }
 
 export default Calendar;

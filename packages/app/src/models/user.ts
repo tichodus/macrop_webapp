@@ -1,3 +1,12 @@
+export interface UserDTO {
+  email: string;
+  first_name: string;
+  last_name: string;
+  gender: string;
+  id: number;
+  image: string;
+}
+
 export class User {
   private _email: string;
   private _firstName: string;
