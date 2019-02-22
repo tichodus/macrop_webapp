@@ -20,3 +20,32 @@ export function* createProject(action: Action) {
     console.log(e);
   }
 }
+
+export function* getProjects(action: Action) {
+  try {
+    const me: User = yield JSON.parse(localStorage.getItem("me") || "");
+    const response = yield httpClient.get(`api/user/${me.id}/project`);
+    if (response) {
+      yield put({ type: ActionType.SET_PROJECTS, payload: response });
+    }
+  } catch (e) {
+    console.log(e);
+  }
+}
+
+export function* addUsersOnProject(action: Action) {
+  try {
+    const response = yield httpClient.post(
+      `api/project/${action.payload.projectId}/role`,
+      {
+        role: "developer",
+        user_id: action.payload.userId
+      }
+    );
+    if (response) {
+      yield put({ type: ActionType.SET_USERS_ON_PROJECT, payload: response });
+    }
+  } catch (e) {
+    console.log(e);
+  }
+}

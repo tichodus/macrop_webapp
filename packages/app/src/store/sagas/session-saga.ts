@@ -20,7 +20,7 @@ export function* login(action: Action) {
       const me = yield httpClient.get("api/user");
       localStorage.setItem("me", JSON.stringify(me));
       yield put({ type: ActionType.USER_LOGGED, payload: me });
-      yield router.navigate("dashboard");
+      yield router.navigate("projects");
     }
   } catch (e) {
     console.log(e);

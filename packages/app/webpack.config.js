@@ -7,7 +7,7 @@ const DIST = "/dist";
 module.exports = {
   mode: "development",
   devtool: "inline-source-map",
-  watch: true,
+  // watch: true,
   watchOptions: {
     aggregateTimeout: 300,
     poll: 1000
@@ -27,6 +27,10 @@ module.exports = {
       {
         test: /\.tsx?$/,
         loader: "awesome-typescript-loader"
+      },
+      {
+        test: /\.css$/,
+        use: ["style-loader", "css-loader"]
       }
     ]
   },

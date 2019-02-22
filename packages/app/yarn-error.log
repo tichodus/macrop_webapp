@@ -1,57 +1,69 @@
 Arguments: 
-  /home/stefan/.nvm/versions/node/v11.7.0/bin/node /usr/bin/yarn
+  /home/stefan/.nvm/versions/node/v11.9.0/bin/node /usr/share/yarn/bin/yarn.js
 
 PATH: 
-  /home/stefan/.nvm/versions/node/v11.7.0/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl
+  /home/stefan/.nvm/versions/node/v11.9.0/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/usr/lib/jvm/java-8-oracle/bin:/usr/lib/jvm/java-8-oracle/db/bin:/usr/lib/jvm/java-8-oracle/jre/bin
 
 Yarn version: 
-  1.12.3
+  1.13.0
 
 Node version: 
-  11.7.0
+  11.9.0
 
 Platform: 
   linux x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/@macrop%2fcomponents: Not found
-      at Request.params.callback [as _callback] (/usr/lib/node_modules/yarn/lib/cli.js:65894:18)
-      at Request.self.callback (/usr/lib/node_modules/yarn/lib/cli.js:129018:22)
-      at Request.emit (events.js:188:13)
-      at Request.<anonymous> (/usr/lib/node_modules/yarn/lib/cli.js:129990:10)
-      at Request.emit (events.js:188:13)
-      at IncomingMessage.<anonymous> (/usr/lib/node_modules/yarn/lib/cli.js:129912:12)
-      at Object.onceWrapper (events.js:276:13)
-      at IncomingMessage.emit (events.js:193:15)
-      at endReadableNT (_stream_readable.js:1129:12)
-      at processTicksAndRejections (internal/process/next_tick.js:76:17)
+  SyntaxError: /home/stefan/repos/macrop_webapp/packages/app/package.json: Unexpected token } in JSON at position 1130
+      at JSON.parse (<anonymous>)
+      at /usr/share/yarn/lib/cli.js:1625:59
+      at Generator.next (<anonymous>)
+      at step (/usr/share/yarn/lib/cli.js:304:30)
+      at /usr/share/yarn/lib/cli.js:315:13
 
 npm manifest: 
   {
-      "name": "@macrop/app",
-      "version": "1.0.0",
-      "main": "index.js",
-      "license": "MIT",
-      "scripts": {
-        "start": "webpack-dev-server --watch"
-      },
-      "dependencies": {
-        "@macrop/components": "^0.0.0",
-        "html-webpack-plugin": "^3.2.0",
-        "inline-source-map": "^0.6.2",
-        "react": "^16.6.3",
-        "react-dom": "^16.6.3",
-        "ts-loader": "^5.3.1"
-      },
-      "devDependencies": {
-        "@types/react": "^16.7.13",
-        "@types/react-dom": "^16.0.11",
-        "typescript": "^3.2.2",
-        "webpack": "^4.27.1",
-        "webpack-cli": "^3.1.2",
-        "webpack-dev-server": "^3.1.10"
-      }
+    "name": "@macrop/app",
+    "version": "1.0.0",
+    "main": "index.js",
+    "license": "MIT",
+    "scripts": {
+      "start": "webpack-dev-server --watch --inline"
+    },
+    "dependencies": {
+      "@material-ui/core": "^3.7.1",
+      "axios": "^0.18.0",
+      "html-webpack-plugin": "^3.2.0",
+      "inline-source-map": "^0.6.2",
+      "mdi-react": "^5.1.0",
+      "polished": "^2.3.1",
+      "react": "^16.8.0-alpha.1",
+      "react-dom": "^16.8.0-alpha.1",
+      "react-redux": "^6.0.0-beta.3",
+      "react-router5": "^7.0.2",
+      "react-scripts": "2.1.2",
+      "redux": "^4.0.0-rc.1",
+      "redux-saga": "^0.16.2",
+      "redux-thunk": "^2.3.0",
+      "router5": "^7.0.1",
+      "router5-plugin-browser": "^7.0.1",
+      "router5-plugin-logger": "^7.0.1",
+      "styled-components": "^4.1.3",
+      "webpack": "^4.29.0",
+      "webpack-cli": "^3.2.1",
+      "webpack-dev-server": "^3.1.14"
+    },
+    "devDependencies": {
+      "@types/node": "10.12.18",
+      "@types/react-dom": "16.0.11",
+      "@types/react-redux": "^6.0.12",
+      "@types/router5": "^5.0.0",
+      "@types/styled-components": "^4.1.4",
+      "awesome-typescript-loader": "^5.2.1",
+      "typescript": "^3.2.2",
+      
     }
+  }
 
 yarn manifest: 
   No manifest
